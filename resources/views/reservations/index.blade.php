@@ -131,7 +131,7 @@
                         </table>
                     @endif
     
-                   
+                 {!! $reservations->render() !!}  
                 </div>
             </div>
 
