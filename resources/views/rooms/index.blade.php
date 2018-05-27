@@ -19,36 +19,39 @@
             </div>
         </div>
         
+        
         <div class="col-xs-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Menu
-
-    <h1>ユーザー一覧</h1>
-
-    @if (count($rooms) >0)
-        <table class="table table table-striped">
-            <thead>
-                <tr>
-                    <th>id</th>
-                    <th>会議室名</th>
-                    <th>定員</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($rooms as $room)
-                    <tr>
-                        <td>{!! link_to_route('rooms.show', $room->id, ['id' => $room->id]) !!}</td>
-                        <td>{{$room->roomname }}</td>
-                        <td>{{ $room->number }}</td>
-
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @endif
+                    会議室一覧
+                </div>
+            
+                <div class="panel-body">
+                    @if (count($rooms) >0)
+                        <table class="table table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>会議室名</th>
+                                    <th>定員</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($rooms as $room)
+                                <tr>
+                                    <td>{!! link_to_route('rooms.show', $room->id, ['id' => $room->id]) !!}</td>
+                                    <td>{{$room->roomname }}</td>
+                                    <td>{{ $room->number }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @endif
     
-    {!! link_to_route('rooms.create', '新規会議室の登録', null, ['class' => 'btn btn-primary']) !!}
+                    {!! link_to_route('rooms.create', '新規会議室の登録', null, ['class' => 'btn btn-primary']) !!}
+                </div>
+            </div>
+        </div>
+    </div>
     
 @endsection

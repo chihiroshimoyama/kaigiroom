@@ -13,7 +13,7 @@
                 <!-- <div class="panel-body"> -->
                 <ul class="nav nav-pills nav-stacked">
                     <li>{!! link_to_route('users.index', 'ユーザー一覧') !!}</li>
-                    <li><a href="">submenu2</a></li>
+                    <li>{!! link_to_route('rooms.index', '会議室一覧') !!}</li>
                 </ul> 
                 <!-- </div> -->
             </div>
@@ -22,8 +22,10 @@
         <div class="col-xs-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Menu
-        
+                    新規ユーザーの登録
+                </div>
+                
+                <div class="panel-body">
                         {!! Form::model($user, ['route' => 'users.store']) !!}
 
                             <div class="form-group">
@@ -38,15 +40,15 @@
                 
                             <div class="form-group">
                                 {!! Form::label('password', 'password:') !!}
-                                {!! Form::text('password', null, ['class' => 'form-control']) !!}
+                                {!! Form::password('password', null, ['class' => 'form-control']) !!}
                             </div>
 
                             {!! Form::submit('登録', ['class' => 'btn btn-primary']) !!}
 
                         {!! Form::close() !!}
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
         
 @endsection

@@ -56,7 +56,7 @@ class UsersController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return redirect('/');
+        return redirect('/admin/home');
     }
     
     public function edit($id)
@@ -76,7 +76,7 @@ class UsersController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return redirect('/');
+        return redirect('/admin/home');
     }
     
     public function destroy($id)
@@ -84,6 +84,6 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect('/');
+        return redirect('/admin/home');
     }
 }

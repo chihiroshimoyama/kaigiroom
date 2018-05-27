@@ -2,12 +2,14 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    <div class="row">
+        <div class="col-xs-8">
+           <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{ __('Login') }}
+                </div>
 
-                <div class="card-body">
+                <div class="panel-body">
                     <form method="POST" action="{{ route('admin.login') }}">
                         @csrf
 
@@ -60,8 +62,10 @@
                         </div>
                     </form>
                 </div>
+                
             </div>
         </div>
     </div>
 </div>
+
 @endsection

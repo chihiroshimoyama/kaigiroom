@@ -30,6 +30,14 @@ Route::get('/', function () { return redirect('/home'); });
 */
 Route::group(['middleware' => 'auth:user'], function() {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('reservations', 'ReservationsController@index')->name('reservations.index');
+    Route::get('reservations/getIndex', 'ReservationsController@getIndex')->name('reservations.getIndex');
+    Route::get('reservations/{id}', 'ReservationsController@show')->name('reservations.show');
+    Route::get('reservations/{id}/edit', 'ReservationsController@edit')->name('reservations.edit');
+    Route::post('reservations','ReservationsController@store')->name('reservations.store');
+    Route::put('reservations/{id}', 'ReservationsController@update')->name('reservations.update');
+    Route::delete('reservations/{id}', 'ReservationsController@destroy')->name('reservations.destroy');
+    
 });
  
 /*

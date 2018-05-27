@@ -1,4 +1,4 @@
-@extends('layouts.app_admin')
+@extends('layouts.app')
 
 @section('content')
     <div class="row">
@@ -12,8 +12,8 @@
                 <!-- 敢えてbodyを作らないことで、メニューを詰める -->
                 <!-- <div class="panel-body"> -->
                 <ul class="nav nav-pills nav-stacked">
-                    <li>{!! link_to_route('users.index', 'ユーザー一覧') !!}</li>
-                    <li>{!! link_to_route('rooms.index', '会議室一覧') !!}</li>
+                    <li>{!! link_to_route('reservations.index', 'すべての予約一覧') !!}</li>
+                    
                 </ul> 
                 <!-- </div> -->
             </div>
@@ -22,36 +22,39 @@
         <div class="col-xs-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    id = {{ $user->id }} のユーザー詳細
+                    id = {{ $reservation->id }} の予約詳細
                 </div>
-
+                
                 <div class="panel-body">
                     <table class="table table-bordered">
                         <tr>
                             <th>id</th>
-                            <td>{{ $user->id }}</td>
+                            <td>{{ $reservation->id }}</td>
                         </tr>
                         <tr>
-                            <th>氏名</th>
-                            <td>{{ $user->name }}</td>
+                            <th>会議室名</th>
+                            <td>{{ $reservation->roomname }}</td>
                         </tr>
                         <tr>
-                            <th>email</th>
-                            <td>{{ $user->email }}</td>
+                            <th>予約人数</th>
+                            <td>{{ $reservation->number }}</td>
                         </tr>
                         <tr>
-                            <th>password</th>
-                            <td>{{ $user->password }}</td>
+                            <th>開始時間</th>
+                            <td>{{ $reservation->startdate }}</td>
+                        </tr>
+                        <tr>
+                            <th>終了時間</th>
+                            <td>{{ $reservation->enddate }}</td>
                         </tr>
                     </table>
-
-                    {!! link_to_route('users.edit', 'このユーザーの編集', ['id' => $user->id], ['class' => 'btn btn-default']) !!}
-    
-                    {!! Form::model($user, ['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
+                    {!! link_to_route('reservations.edit', 'この予約の編集', ['id' => $reservation->id], ['class' => 'btn btn-default']) !!}
+                    {!! Form::model($reservation, ['route' => ['reservations.destroy', $reservation->id], 'method' => 'delete']) !!}
                     {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
                     {!! Form::close() !!}
                 </div>
             </div>
         </div>
     </div>
+    
 @endsection

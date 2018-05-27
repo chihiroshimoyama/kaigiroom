@@ -43,7 +43,7 @@ class RoomsController extends Controller
         $room->number = $request->number;
         $room->save();
 
-        return redirect('/');
+        return redirect('/admin/home');
     }
     
     public function edit($id)
@@ -62,7 +62,7 @@ class RoomsController extends Controller
         $room->number = $request->number;
         $room->save();
 
-        return redirect('/');
+        return redirect('/admin/home');
     }
     
     public function destroy($id)
@@ -70,6 +70,6 @@ class RoomsController extends Controller
         $room = Room::find($id);
         $room->delete();
 
-        return redirect('/');
+        return redirect('/admin/home');
     }
 }

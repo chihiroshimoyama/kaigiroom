@@ -13,7 +13,7 @@
                 <!-- <div class="panel-body"> -->
                 <ul class="nav nav-pills nav-stacked">
                     <li>{!! link_to_route('users.index', 'ユーザー一覧') !!}</li>
-                    <li><a href="">submenu2</a></li>
+                    <li>{!! link_to_route('rooms.index', '会議室一覧') !!}</li>
                 </ul> 
                 <!-- </div> -->
             </div>
@@ -22,32 +22,31 @@
         <div class="col-xs-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Menu
+                    id: {{ $user->id }} のユーザー編集
+                </div>
                     
-                    <h1>id: {{ $user->id }} のユーザー編集ページ</h1>
-
-
-                        {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'put']) !!}
-                            <div class="form-group">
+                <div class="panel-body">
+                    {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'put']) !!}
+                        <div class="form-group">
                              {!! Form::label('name', '氏名:') !!}
                              {!! Form::text('name', null, ['class' => 'form-control']) !!}
-                            </div>
+                        </div>
         
-                            <div class="form-group">
+                        <div class="form-group">
                              {!! Form::label('email', 'email:') !!}
                              {!! Form::text('email', null, ['class' => 'form-control']) !!}
-                            </div>
+                        </div>
                             
-                            <div class="form-group">
+                        <div class="form-group">
                              {!! Form::label('password', 'password:') !!}
-                             {!! Form::text('password', null, ['class' => 'form-control']) !!}
-                            </div>
+                             {!! Form::password('password', null, ['class' => 'form-control']) !!}
+                        </div>
         
-                             {!! Form::submit('更新', ['class' => 'btn btn-default']) !!}
+                    {!! Form::submit('更新', ['class' => 'btn btn-primary']) !!}
          
-                        {!! Form::close() !!}
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
-
+    </div>
 @endsection
