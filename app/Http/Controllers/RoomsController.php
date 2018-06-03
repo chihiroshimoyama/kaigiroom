@@ -17,6 +17,15 @@ class RoomsController extends Controller
         ]);
     }
     
+    public function roomindex()
+    {
+        $rooms = Room::paginate(10);
+
+        return view('rooms.roomindex', [
+            'rooms' => $rooms,
+        ]);
+    }
+    
     public function show($id)
     {
         $room = Room::find($id);

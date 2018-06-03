@@ -45,7 +45,7 @@ class ReservationsController extends Controller
         
             $reservation = new Reservation;
             $rooms = Room::all();
-        
+
             $reservations = \DB::table('reservations')
                             ->where('room_id', $searchroom)
 
@@ -54,16 +54,11 @@ class ReservationsController extends Controller
                             ->join('users', 'reservations.user_id', '=', 'users.id')
                             ->select('reservations.*', 'users.name', 'rooms.roomname')
                             ->orderBy('startdate','DESC')
-                            ->get();
-            
+                            ->paginate(10);
+
 
                             
-            return view('reservations.getIndex', [
-            'reservations' => $reservations,
-            'reservation' => $reservation,
-            'rooms' => $rooms,
             
-        ]);
         }elseif(empty($searchroom)){      
         
         
@@ -78,13 +73,9 @@ class ReservationsController extends Controller
                         ->join('users', 'reservations.user_id', '=', 'users.id')
                         ->select('reservations.*', 'users.name', 'rooms.roomname')
                         ->orderBy('startdate','DESC')
-                        ->get();
+                        ->paginate(10);
                             
-        return view('reservations.getIndex', [
-            'reservations' => $reservations,
-            'reservation' => $reservation,
-            'rooms' => $rooms,
-        ]);
+        
         }else{      
         
         
@@ -99,14 +90,18 @@ class ReservationsController extends Controller
                         ->join('users', 'reservations.user_id', '=', 'users.id')
                         ->select('reservations.*', 'users.name', 'rooms.roomname')
                         ->orderBy('startdate','DESC')
-                        ->get();
-                            
+                        ->paginate(10);
+                        
+        
+        }
+        
         return view('reservations.getIndex', [
             'reservations' => $reservations,
             'reservation' => $reservation,
             'rooms' => $rooms,
+            'search_query' => ['room_id' => $searchroom, 'date' => $searchdate],
+            
         ]);
-        }   
     }
     
     

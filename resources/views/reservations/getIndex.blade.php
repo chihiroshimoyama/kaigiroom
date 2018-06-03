@@ -129,6 +129,8 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        
+                        {!! $reservations->appends(['room_id' => $search_query['room_id'], 'date' => $search_query['date']])->render() !!}
                     @endif
     
                    

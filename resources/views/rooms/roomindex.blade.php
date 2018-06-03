@@ -1,26 +1,11 @@
-@extends('layouts.app_admin')
+@extends('layouts.app')
 
 @section('content')
     <div class="row">
-        <!-- left -->
-        <div class="col-md-3">
-            <!-- パネルで囲む -->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Menu
-                </div>
-                <!-- 敢えてbodyを作らないことで、メニューを詰める -->
-                <!-- <div class="panel-body"> -->
-                <ul class="nav nav-pills nav-stacked">
-                    <li>{!! link_to_route('users.index', 'ユーザー一覧') !!}</li>
-                    <li>{!! link_to_route('rooms.index', '会議室一覧') !!}</li>
-                </ul> 
-                <!-- </div> -->
-            </div>
-        </div>
+
         
         
-        <div class="col-xs-6">
+        <div class="col-xs-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     会議室一覧
@@ -34,25 +19,30 @@
                                     <th>id</th>
                                     <th>会議室名</th>
                                     <th>定員</th>
+                                    <th>写真</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($rooms as $room)
                                 <tr>
-                                    <td>{!! link_to_route('rooms.show', $room->id, ['id' => $room->id]) !!}</td>
-                                    <td>{{$room->roomname }}</td>
+                                    <td>{{ $room->id }}</td>
+                                    <td>{{ $room->roomname }}</td>
                                     <td>{{ $room->number }}</td>
+                                    <td>
+                                        <?php $pic = "pic/$room->id.jpg" ?>
+                                        <img src="{{ secure_asset( $pic ) }}" alt="kaigiroom">
+                                    </td>
                                 </tr>
+                                
                                 @endforeach
                             </tbody>
                         </table>
                     @endif
     
-                    {!! link_to_route('rooms.create', '新規会議室の登録', null, ['class' => 'btn btn-primary']) !!}
+                    
                 </div>
             </div>
         </div>
-        
     </div>
     
 @endsection

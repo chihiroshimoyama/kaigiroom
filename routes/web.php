@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth:user'], function() {
     Route::post('reservations','ReservationsController@store')->name('reservations.store');
     Route::put('reservations/{id}', 'ReservationsController@update')->name('reservations.update');
     Route::delete('reservations/{id}', 'ReservationsController@destroy')->name('reservations.destroy');
-    
+    Route::get('rooms', 'RoomsController@roomindex')->name('roomindex');
 });
  
 /*

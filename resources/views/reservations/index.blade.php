@@ -54,7 +54,10 @@
                             <div class="form-group">
                                 {!! Form::label('room_id', '会議室名:') !!}
                                 {!! Form::select('room_id', $rooms->pluck('roomname', 'id'), 'null', ['class' => 'form-control' ,'placeholder' => '会議室名']) !!}
+                                {!! link_to_route('roomindex', '会議室情報', null, ['class' => 'btn btn-primary']) !!}
                             </div>
+                            
+                            
                             
                             <div class="form-group">
                                 {!! Form::label('number', '人数:') !!}

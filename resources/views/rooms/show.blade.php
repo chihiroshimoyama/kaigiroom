@@ -45,6 +45,8 @@
                     {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
                     {!! Form::close() !!}
                 </div>
+                <?php $pic = "pic/$room->id.jpg" ?>
+                <img src="{{ secure_asset( $pic ) }}" alt="kaigiroom">
             </div>
         </div>
     </div>
