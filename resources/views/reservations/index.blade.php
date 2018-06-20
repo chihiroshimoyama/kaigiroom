@@ -100,7 +100,7 @@
         </div>
         
         
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     予約一覧
@@ -112,6 +112,7 @@
                             <thead>
                                 <tr>
                                     <th></th>
+                                    <th></th>
                                     <th>会議室名</th>
                                     <th>人数</th>
                                     <th>会議名</th>
@@ -120,9 +121,30 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                {!! link_to_route('reservations.csv', 'gooleカレンダーインポート用csv作成', null, ['class' => 'btn btn-success']) !!}
                                 @foreach ($reservations as $reservation)
+
+                                
                                 <tr>
                                     <td>{!! link_to_route('reservations.show', '編集', ['id' => $reservation->id], ['class' => 'btn btn-danger']) !!}</td>
+                                    <td>{{Html::link(
+                                    'http://www.google.com/calendar/event?action=TEMPLATE&text='
+                                    .$reservation->kaiginame
+                                    .'&location='
+                                    .$reservation->roomname
+                                    .'&details='
+                                    .$reservation->number
+                                    .'名'
+                                    .'&dates='
+                                    .date('Ymd',strtotime($reservation->startdate))
+                                    .'T'
+                                    .date('His',strtotime($reservation->startdate))
+                                    .'/'
+                                    .date('Ymd',strtotime($reservation->enddate))
+                                    .'T'
+                                    .date('His',strtotime($reservation->enddate))
+                                    ,
+                                    'googleカレンダーに登録', ['target' => '_blank' ,'class' => 'btn btn-primary'])}}</td>
                                     <td>{{ $reservation->roomname }}</td>
                                     <td>{{ $reservation->number }}</td>
                                     <td>{{ $reservation->kaiginame }}</td>

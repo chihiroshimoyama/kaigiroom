@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth:user'], function() {
     Route::put('reservations/{id}', 'ReservationsController@update')->name('reservations.update');
     Route::delete('reservations/{id}', 'ReservationsController@destroy')->name('reservations.destroy');
     Route::get('rooms', 'RoomsController@roomindex')->name('roomindex');
+    Route::get('reservationcsvs/csv', 'CsvController@csv')->name('reservations.csv');
 });
  
 /*
